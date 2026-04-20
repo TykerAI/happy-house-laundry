@@ -34,15 +34,18 @@
             --gold-200: #FFECB3;
             --gold-300: #FFD54F;
             --gold-400: #FFC107;
-            --gold-500: #F5B301;   /* Primary Gold */
-            --gold-600: #D49A00;   /* Hover / Darker Gold */
+            --gold-500: #F5B301;
+            /* Primary Gold */
+            --gold-600: #D49A00;
+            /* Hover / Darker Gold */
             --gold-700: #A37600;
             --gold-glow: rgba(245, 179, 1, 0.30);
             --gold-glow-sm: rgba(245, 179, 1, 0.12);
 
             /* ========== LIGHT / WHITE BASE ========== */
             --white: #FFFFFF;
-            --off-white: #FDFCF8;       /* Kem nhẹ */
+            --off-white: #FDFCF8;
+            /* Kem nhẹ */
             --light-50: #FAF9F5;
             --light-100: #F5F2EA;
             --light-200: #EDE9DC;
@@ -55,15 +58,18 @@
             --dark-700: #302A20;
 
             /* ========== TEXT (trên nền trắng) ========== */
-            --text-primary:   #1A1510;  /* Đen ấm đậm */
-            --text-secondary: #443C2E;  /* Nâu đậm */
-            --text-muted:     #7A6E58;  /* Xám nâu */
+            --text-primary: #1A1510;
+            /* Đen ấm đậm */
+            --text-secondary: #443C2E;
+            /* Nâu đậm */
+            --text-muted: #7A6E58;
+            /* Xám nâu */
             --text-gold: var(--gold-600);
 
             /* ========== SURFACES (nền trắng) ========== */
-            --surface-base:   var(--white);
+            --surface-base: var(--white);
             --surface-raised: var(--off-white);
-            --surface-card:   var(--light-100);
+            --surface-card: var(--light-100);
 
             /* ========== BORDERS (gold nhẹ trên nền trắng) ========== */
             --border-subtle: rgba(245, 179, 1, 0.18);
@@ -569,7 +575,7 @@
             background: var(--white);
             border-bottom: 2px solid var(--border-subtle);
             padding: 1.25rem var(--space-sm);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
         }
 
         .mobile-nav.open {
@@ -606,84 +612,279 @@
         }
 
         /* ============================================================
-           FLOATING SOCIAL
+           FLOATING CONTACT BUTTONS (Premium VR Style)
            ============================================================ */
-        .floating-social {
+        #button-contact-vr {
             position: fixed;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 800;
+            bottom: 40px;
+            left: 30px;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .fsoc-btn {
-            width: 42px;
-            height: 42px;
+        #button-contact-vr .contact-btn {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #button-contact-vr .contact-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            animation: contact-pulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #button-contact-vr .contact-circle {
+            position: relative;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 17px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
-            position: relative;
+            z-index: 2;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            background-color: var(--color-brand);
+            overflow: hidden;
         }
 
-        .fsoc-btn:hover {
-            transform: scale(1.18) rotate(6deg);
+        #button-contact-vr .contact-circle i {
+            color: #fff;
+            font-size: 22px;
+            line-height: 1;
+            transition: transform 0.4s;
         }
 
-        .fsoc-btn::after {
-            content: attr(data-tooltip);
+        #button-contact-vr .contact-circle img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            transition: transform 0.4s;
+        }
+
+        #button-contact-vr .contact-btn:hover .contact-circle {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Hover animations for icons */
+        #button-contact-vr .contact-btn:hover .contact-circle i,
+        #button-contact-vr .contact-btn:hover .contact-circle img {
+            transform: scale(1.1);
+        }
+
+        #button-contact-vr .contact-btn:hover .contact-circle i.fa-phone-alt {
+            animation: ring-shake 0.4s ease-in-out infinite alternate;
+        }
+
+        /* Tooltip Style */
+        #button-contact-vr .contact-tooltip {
             position: absolute;
-            left: 110%;
-            background: var(--text-primary);
-            color: var(--white);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            white-space: nowrap;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--light-300);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-        }
-
-        .fsoc-btn:hover::after {
-            opacity: 1;
-        }
-
-        .fsoc-fb {
-            background: #3B5998;
-            color: #fff;
-        }
-
-        .fsoc-zalo {
-            background: #0068FF;
-            color: #fff;
-        }
-
-        .fsoc-wa {
-            background: #25D366;
-            color: #fff;
-        }
-
-        .fsoc-phone {
-            background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
-            color: var(--dark-950);
-            width: auto;
-            padding: 0 14px;
-            border-radius: 24px;
+            left: 65px;
+            background: #fff;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 700;
-            font-size: 0.8rem;
-            gap: 6px;
-            box-shadow: 0 4px 16px var(--gold-glow);
-            animation: glow-pulse 2.5s ease-in-out infinite;
+            font-family: var(--font-body);
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-15px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            border: 1px solid var(--border-medium);
+        }
+
+        #button-contact-vr .contact-tooltip::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 7px 6px 0;
+            border-style: solid;
+            border-color: transparent var(--gold-300) transparent transparent;
+            z-index: -1;
+        }
+
+        #button-contact-vr .contact-tooltip::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 5px 6px 5px 0;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+        }
+
+        #button-contact-vr .contact-btn:hover .contact-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        /* Brand Colors & specific styling */
+        .contact-fb {
+            --color-brand: #1877F2;
+        }
+
+        .contact-fb .contact-ring {
+            border-color: rgba(24, 119, 242, 0.5);
+        }
+
+        .contact-fb .contact-circle {
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+        }
+
+        .contact-zalo {
+            --color-brand: #fff;
+        }
+
+        .contact-zalo .contact-circle {
+            box-shadow: 0 4px 15px rgba(0, 104, 255, 0.25);
+        }
+
+        .contact-zalo .contact-ring {
+            border-color: rgba(0, 104, 255, 0.5);
+        }
+
+        .contact-wa {
+            --color-brand: #25D366;
+        }
+
+        .contact-wa .contact-ring {
+            border-color: rgba(37, 211, 102, 0.5);
+        }
+
+        .contact-wa .contact-circle {
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Phone & Phone Bar */
+        .contact-phone {
+            --color-brand: var(--gold-500);
+        }
+
+        .contact-phone .contact-circle {
+            box-shadow: 0 4px 15px rgba(245, 179, 1, 0.4);
+        }
+
+        .contact-phone .contact-circle i {
+            color: var(--dark-950);
+        }
+
+        .contact-phone .contact-ring {
+            border-color: rgba(245, 179, 1, 0.6);
+        }
+
+        .phone-bar {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+            color: var(--dark-950);
+            padding: 8px 18px 8px 38px;
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            z-index: 1;
+            box-shadow: 0 6px 16px rgba(245, 179, 1, 0.3);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .phone-bar:hover {
+            color: var(--dark-950);
+            background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
+            padding-left: 42px;
+        }
+
+        /* Constant animation strictly for Phone circle icon */
+        .contact-phone .contact-circle i {
+            animation: phone-shake 1.5s infinite ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes contact-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        @keyframes ring-shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-20deg);
+            }
+
+            75% {
+                transform: rotate(20deg);
+            }
+        }
+
+        @keyframes phone-shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(-15deg);
+            }
+
+            20% {
+                transform: rotate(15deg);
+            }
+
+            30% {
+                transform: rotate(-15deg);
+            }
+
+            40% {
+                transform: rotate(15deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
         }
 
         /* ============================================================
@@ -735,7 +936,7 @@
             position: relative;
             aspect-ratio: 4/5;
             border: 3px solid var(--gold-300);
-            box-shadow: 0 20px 60px rgba(245, 179, 1, 0.20), 0 4px 20px rgba(0,0,0,0.10);
+            box-shadow: 0 20px 60px rgba(245, 179, 1, 0.20), 0 4px 20px rgba(0, 0, 0, 0.10);
         }
 
         .hero-img-frame img {
@@ -910,7 +1111,7 @@
 
         .trust-divider {
             width: 1px;
-            background: rgba(0,0,0,0.15);
+            background: rgba(0, 0, 0, 0.15);
             align-self: stretch;
         }
 
@@ -1301,23 +1502,23 @@
         .cta-banner .btn-primary {
             background: var(--dark-950);
             color: var(--gold-400);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
         .cta-banner .btn-primary:hover {
             background: var(--dark-800);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         .cta-banner .btn-outline {
-            background: rgba(255,255,255,0.20);
+            background: rgba(255, 255, 255, 0.20);
             color: var(--dark-950);
-            border: 2px solid rgba(0,0,0,0.25);
+            border: 2px solid rgba(0, 0, 0, 0.25);
         }
 
         .cta-banner .btn-outline:hover {
-            background: rgba(255,255,255,0.35);
-            border-color: rgba(0,0,0,0.35);
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(0, 0, 0, 0.35);
         }
 
         /* ============================================================
@@ -1339,7 +1540,7 @@
             border: 1.5px solid var(--light-200);
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
         }
 
         .map-info h3 {
@@ -1519,22 +1720,40 @@
         .footer-social-btn {
             width: 38px;
             height: 38px;
-            border-radius: 9px;
-            background: var(--dark-800);
-            border: 1px solid rgba(245, 179, 1, 0.20);
-            color: #6B6050;
+            border-radius: 10px;
+            background: var(--dark-700);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+            font-size: 1rem;
+            transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+            overflow: hidden;
         }
 
         .footer-social-btn:hover {
-            background: var(--gold-600);
-            border-color: var(--gold-500);
+            transform: translateY(-3px) scale(1.10);
+            opacity: 0.9;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Brand colors per platform */
+        .fsb-facebook {
+            background: #1877F2;
+        }
+
+        .fsb-zalo {
+            background: #fff;
+        }
+
+        .fsb-whatsapp {
+            background: #25D366;
+        }
+
+        .fsb-phone {
+            background: var(--gold-500);
             color: var(--dark-950);
-            transform: translateY(-2px);
         }
 
         .footer-bottom {
@@ -1700,22 +1919,48 @@
 <body>
 
     <!-- ============================================================
-         FLOATING SOCIAL BUTTONS
+         FLOATING CONTACT BUTTONS (Premium VR Style)
          ============================================================ -->
-    <div class="floating-social" aria-label="Kênh liên hệ">
-        <a href="#" class="fsoc-btn fsoc-fb" title="Facebook" data-tooltip="Facebook">
-            <i class="fab fa-facebook-f"></i>
+    <div id="button-contact-vr">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/happyhouse.155haison" target="_blank" class="contact-btn contact-fb"
+            aria-label="Facebook">
+            <div class="contact-ring"></div>
+            <div class="contact-circle">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <span class="contact-tooltip">Fanpage Facebook</span>
         </a>
-        <a href="https://zalo.me/0914744333" class="fsoc-btn fsoc-zalo" title="Zalo" data-tooltip="Zalo Chat">
-            <i class="fas fa-comment-dots"></i>
+
+        <!-- Zalo -->
+        <a href="https://zalo.me/0914744333" target="_blank" class="contact-btn contact-zalo" aria-label="Zalo">
+            <div class="contact-ring"></div>
+            <div class="contact-circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo"
+                    onerror="this.onerror=null;this.src='https://page.widget.zalo.me/static/images/2.0/Logo.svg'">
+            </div>
+            <span class="contact-tooltip">Chat Zalo</span>
         </a>
-        <a href="#" class="fsoc-btn fsoc-wa" title="WhatsApp" data-tooltip="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/84914744333" target="_blank" class="contact-btn contact-wa" aria-label="WhatsApp">
+            <div class="contact-ring"></div>
+            <div class="contact-circle">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="contact-tooltip">Chat WhatsApp</span>
         </a>
-        <a href="tel:0914744333" class="fsoc-btn fsoc-phone" aria-label="Gọi ngay 0914 744 333">
-            <i class="fas fa-phone-alt"></i>
-            <span>0914 744 333</span>
-        </a>
+
+        <!-- Phone -->
+        <div class="contact-btn contact-phone">
+            <div class="contact-ring"></div>
+            <div class="contact-circle">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <a href="tel:0914744333" class="phone-bar">
+                <span class="phone-number">0914 744 333</span>
+            </a>
+        </div>
     </div>
 
     <!-- ============================================================
@@ -1862,15 +2107,15 @@
         <div class="container">
             <div class="trust-grid">
                 <div class="trust-item reveal delay-1">
-                    <div class="trust-num" data-count="130">0</div>
+                    <div class="trust-num" data-count="200">0</div>
                     <div class="trust-label">Đánh Giá 5 Sao</div>
                 </div>
                 <div class="trust-item reveal delay-2">
-                    <div class="trust-num" data-count="5">0</div>
+                    <div class="trust-num" data-count="3">0</div>
                     <div class="trust-label">Năm Kinh Nghiệm</div>
                 </div>
                 <div class="trust-item reveal delay-3">
-                    <div class="trust-num" data-count="500">0</div>
+                    <div class="trust-num" data-count="1000">0</div>
                     <div class="trust-label">Khách Hàng Hài Lòng</div>
                 </div>
                 <div class="trust-item reveal delay-4">
@@ -2269,14 +2514,32 @@
                         <li><a href="#"><i class="fas fa-store"></i> Trụ sở chính: 155 Hải Sơn</a></li>
                     </ul>
                     <div class="footer-socials">
-                        <a href="#" class="footer-social-btn" aria-label="Facebook Happy House Laundry"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="https://zalo.me/0914744333" class="footer-social-btn"
-                            aria-label="Zalo Happy House Laundry"><i class="fas fa-comment-dots"></i></a>
-                        <a href="#" class="footer-social-btn" aria-label="WhatsApp Happy House Laundry"><i
-                                class="fab fa-whatsapp"></i></a>
-                        <a href="tel:0914744333" class="footer-social-btn" aria-label="Gọi Happy House Laundry"><i
-                                class="fas fa-phone-alt"></i></a>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/happyhouse.155haison" target="_blank"
+                            class="footer-social-btn fsb-facebook" aria-label="Facebook Happy House Laundry"
+                            title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <!-- Zalo: SVG chính thức -->
+                        <a href="https://zalo.me/0914744333" class="footer-social-btn fsb-zalo"
+                            aria-label="Zalo Happy House Laundry" title="Zalo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo"
+                                style="width: 22px; height: 22px; object-fit: contain;"
+                                onerror="this.onerror=null;this.src='https://page.widget.zalo.me/static/images/2.0/Logo.svg'">
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="#" class="footer-social-btn fsb-whatsapp" aria-label="WhatsApp Happy House Laundry"
+                            title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                        <!-- Phone -->
+                        <a href="tel:0914744333" class="footer-social-btn fsb-phone"
+                            aria-label="Gọi Happy House Laundry" title="0914 744 333">
+                            <i class="fas fa-phone-alt"></i>
+                        </a>
                     </div>
                 </div>
 
