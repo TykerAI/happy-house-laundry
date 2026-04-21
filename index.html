@@ -13,6 +13,15 @@
     <meta property="og:description"
         content="Dịch vụ giặt sấy cao cấp tại Đà Nẵng. Lấy & trả tận nơi, công nghệ hiện đại, chất lượng xuất sắc.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://happyhouselaundry.vn">
+    <meta property="og:image" content="./Picture/logo.jpg">
+    <meta property="og:image:alt" content="Happy House Laundry - Giặt Sấy Chuyên Nghiệp Đà Nẵng">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:site_name" content="Happy House Laundry">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Happy House Laundry">
+    <meta name="theme-color" content="#F5B301">
+    <link rel="canonical" href="https://happyhouselaundry.vn">
     <link rel="icon" href="./Picture/logo.jpg" type="image/jpeg">
 
     <!-- Fonts: Plus Jakarta Sans + DM Serif Display -->
@@ -23,6 +32,48 @@
         rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- JSON-LD LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Happy House Laundry",
+      "description": "Dịch vụ giặt sấy chuyên nghiệp hàng đầu Đà Nẵng. Giao nhận tận nơi, thiết bị hiện đại, cam kết chất lượng 100%.",
+      "url": "https://happyhouselaundry.vn",
+      "telephone": "+84914744333",
+      "email": "happyhouselaundry@gmail.com",
+      "image": "./Picture/logo.jpg",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "155 Hải Sơn",
+        "addressLocality": "Hải Châu",
+        "addressRegion": "Đà Nẵng",
+        "addressCountry": "VN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 16.083034,
+        "longitude": 108.213784
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "06:00",
+        "closes": "22:30"
+      },
+      "sameAs": [
+        "https://www.facebook.com/happyhouse.155haison",
+        "https://zalo.me/0914744333"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "200"
+      }
+    }
+    </script>
 
     <style>
         /* ============================================================
@@ -519,22 +570,22 @@
             transform-origin: left;
         }
 
-        .nav-cta {
+        .nav-links .nav-cta {
             background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
-            color: var(--dark-950) !important;
-            padding: 0.5rem 1.25rem !important;
-            border-radius: 9999px !important;
-            font-weight: 800 !important;
+            color: var(--dark-950);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 800;
             box-shadow: 0 4px 16px var(--gold-glow);
         }
 
-        .nav-cta:hover {
+        .nav-links .nav-cta:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 22px var(--gold-glow) !important;
+            box-shadow: 0 6px 22px var(--gold-glow);
         }
 
-        .nav-cta::after {
-            display: none !important;
+        .nav-links .nav-cta::after {
+            display: none;
         }
 
         /* Mobile hamburger */
@@ -603,11 +654,11 @@
             margin-top: 1rem;
             display: block;
             text-align: center;
-            color: var(--dark-950) !important;
+            color: var(--dark-950);
             background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
             border-radius: 9999px;
-            padding: 0.875rem !important;
-            font-weight: 800 !important;
+            padding: 0.875rem;
+            font-weight: 800;
             box-shadow: 0 4px 16px var(--gold-glow);
         }
 
@@ -820,9 +871,17 @@
             padding-left: 42px;
         }
 
-        /* Constant animation strictly for Phone circle icon */
+        /* Phone icon: shake 3x then pause 4s — less annoying than infinite */
         .contact-phone .contact-circle i {
-            animation: phone-shake 1.5s infinite ease-in-out;
+            animation: phone-shake 1.5s ease-in-out 3, phone-pause 4s 4.5s infinite;
+        }
+
+        @keyframes phone-pause {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         /* Animations */
@@ -997,8 +1056,6 @@
         }
 
         /* Hero content */
-        .hero-content {}
-
         .hero-tag {
             display: inline-flex;
             align-items: center;
@@ -1091,8 +1148,6 @@
             text-align: center;
         }
 
-        .trust-item {}
-
         .trust-num {
             font-family: var(--font-display);
             font-size: 2.75rem;
@@ -1125,10 +1180,11 @@
         }
 
         .pillar-card {
-            background: var(--white);
-            border: 1.5px solid var(--light-200);
+            background: var(--dark-700);
+            border: 1.5px solid rgba(245, 179, 1, 0.20);
             border-radius: 20px;
             padding: 2rem;
+            text-align: center;
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
@@ -1149,7 +1205,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: 1.25rem;
+            margin: 0 auto 1.25rem auto;
             transition: background 0.3s, box-shadow 0.3s;
         }
 
@@ -1161,13 +1217,13 @@
         .pillar-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--off-white);
             margin-bottom: 0.75rem;
         }
 
         .pillar-desc {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--light-300);
             line-height: 1.7;
         }
 
@@ -1628,8 +1684,6 @@
             border-bottom: 1px solid rgba(245, 179, 1, 0.15);
         }
 
-        .footer-brand {}
-
         .footer-logo-row {
             display: flex;
             align-items: center;
@@ -1778,6 +1832,13 @@
         }
 
         /* ============================================================
+           UTILITY CLASSES
+           ============================================================ */
+        .section-dark {
+            background: var(--dark-800);
+        }
+
+        /* ============================================================
            SECTION HEADER (reusable)
            ============================================================ */
         .section-header {
@@ -1811,6 +1872,23 @@
 
         .section-header .gold-divider {
             margin: 1.25rem auto 0;
+        }
+
+        /* On dark backgrounds, section-header text needs to be lighter */
+        .section-dark .section-header h2 {
+            color: var(--off-white);
+        }
+
+        .section-dark .section-header p {
+            color: var(--light-300);
+        }
+
+        .section-dark .section-label {
+            color: var(--gold-400);
+        }
+
+        .section-dark .section-label::before {
+            background: var(--gold-400);
         }
 
         /* ============================================================
@@ -1953,15 +2031,13 @@
         </a>
 
         <!-- Phone -->
-        <div class="contact-btn contact-phone">
+        <a href="tel:0914744333" class="contact-btn contact-phone" aria-label="Gọi ngay 0914 744 333">
             <div class="contact-ring"></div>
             <div class="contact-circle">
                 <i class="fas fa-phone-alt"></i>
             </div>
-            <a href="tel:0914744333" class="phone-bar">
-                <span class="phone-number">0914 744 333</span>
-            </a>
-        </div>
+            <span class="phone-bar">0914 744 333</span>
+        </a>
     </div>
 
     <!-- ============================================================
@@ -2039,7 +2115,7 @@
                 <div class="hero-img-wrap reveal-left">
                     <div class="hero-img-frame">
                         <img src="./Picture/picture1.jpg" alt="Tiệm giặt ủi chuyên nghiệp Happy House Laundry Đà Nẵng"
-                            loading="eager">
+                            loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <!-- Floating badge -->
                     <div class="hero-badge" aria-label="3 năm kinh nghiệm">
@@ -2120,7 +2196,7 @@
                     <div class="trust-label">Khách Hàng Hài Lòng</div>
                 </div>
                 <div class="trust-item reveal delay-4">
-                    <div class="trust-num">100%</div>
+                    <div class="trust-num" data-count="100" data-suffix="%">0</div>
                     <div class="trust-label">Cam Kết Chất Lượng</div>
                 </div>
             </div>
@@ -2130,7 +2206,7 @@
     <!-- ============================================================
          THREE PILLARS (Core Value Proposition)
          ============================================================ -->
-    <section class="section-pad" style="background: var(--dark-800);" id="pillars">
+    <section class="section-pad section-dark" id="pillars">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Cam Kết Của Chúng Tôi</span>
@@ -2369,12 +2445,14 @@
     <!-- ============================================================
          CTA BANNER
          ============================================================ -->
-    <section class="section-pad" style="background: var(--dark-800);">
+    <section class="section-pad section-dark">
         <div class="container">
             <div class="cta-banner reveal">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🧺</div>
-                <h2>Sẵn Sàng Trải Nghiệm<br><span style="color: var(--gold-500);">Dịch Vụ Đẳng Cấp?</span></h2>
-                <p>Hơn 500 gia đình tại Đà Nẵng đã tin tưởng Happy House Laundry.<br>Hãy để chúng tôi chăm sóc tủ đồ của
+                <img src="./Picture/logo2.png" alt="Happy House Laundry"
+                    style="display: block; height: 80px; margin: 0 auto 1.5rem auto; border-radius: 12px;">
+                <h2>Sẵn Sàng Trải Nghiệm<br><span style="color: var(--white); text-shadow: 0 2px 5px rgba(0,0,0,0.15);">Dịch Vụ Của Chúng Tôi?</span></h2>
+                <p>Hơn 1000 gia đình tại Đà Nẵng đã tin tưởng Happy House Laundry.<br>Hãy để chúng tôi chăm sóc tủ đồ
+                    của
                     bạn ngay hôm nay.</p>
                 <div class="cta-actions">
                     <a href="tel:0914744333" class="btn btn-primary" id="cta-banner-call">
@@ -2531,8 +2609,8 @@
                         </a>
 
                         <!-- WhatsApp -->
-                        <a href="#" class="footer-social-btn fsb-whatsapp" aria-label="WhatsApp Happy House Laundry"
-                            title="WhatsApp">
+                        <a href="https://wa.me/84914744333" target="_blank" class="footer-social-btn fsb-whatsapp"
+                            aria-label="WhatsApp Happy House Laundry" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
 
@@ -2592,7 +2670,7 @@
         revealEls.forEach(el => revealObserver.observe(el));
 
         // --- Animated Counter ---
-        function animateCounter(el, target, duration = 1800, suffix = '+') {
+        function animateCounter(el, target, duration, suffix) {
             const start = performance.now();
             const update = (now) => {
                 const progress = Math.min((now - start) / duration, 1);
@@ -2610,7 +2688,9 @@
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseInt(el.dataset.count, 10);
-                    animateCounter(el, target, 1800, '+');
+                    // Support custom suffix via data-suffix attribute (e.g. "%" for 100%)
+                    const suffix = el.dataset.suffix || '+';
+                    animateCounter(el, target, 1800, suffix);
                     counterObserver.unobserve(el);
                 }
             });
@@ -2618,7 +2698,7 @@
 
         counterEls.forEach(el => counterObserver.observe(el));
 
-        // --- Smooth scroll for anchor links ---
+        // --- Smooth scroll for anchor links (offset for sticky nav) ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const targetId = anchor.getAttribute('href');
@@ -2628,6 +2708,7 @@
                     e.preventDefault();
                     const navH = document.getElementById('main-nav').offsetHeight;
                     const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+                    // JS scroll override needed for nav offset — CSS smooth-behavior handles other cases
                     window.scrollTo({ top, behavior: 'smooth' });
                 }
             });
