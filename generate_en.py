@@ -24,109 +24,13 @@ SOURCE_FILE = Path('index.html')
 TARGET_FILE = Path('en.html')
 
 # -----------------------------------------------------------------------------
-# Asset Injection Constants (Used as fallbacks)
+# Asset Injection Constants (Used as fallbacks for HTML structure)
 # -----------------------------------------------------------------------------
-LANG_SELECTOR_CSS_MARKER = '/* ============================================================'
-LANG_SELECTOR_CSS_TO_ADD = """
-        /* ============================================================
-           LANGUAGE SELECTOR
-           ============================================================ */
-        .lang-selector {
-            position: relative;
-            margin-left: 0.5rem;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid var(--border-medium);
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: all 0.25s;
-        }
-
-        .lang-btn:hover {
-            border-color: var(--gold-500);
-            background: var(--gold-100);
-        }
-
-        .lang-btn .flag {
-            font-size: 1.1rem;
-        }
-
-        .lang-menu {
-            position: absolute;
-            top: calc(100% + 10px);
-            right: 0;
-            background: var(--white);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            list-style: none;
-            min-width: 130px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 100;
-        }
-
-        .lang-selector:hover .lang-menu,
-        .lang-menu.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-menu a {
-            display: flex !important;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem !important;
-            color: var(--text-secondary) !important;
-            text-transform: none !important;
-            font-weight: 500 !important;
-            letter-spacing: normal !important;
-            border-radius: 8px;
-        }
-
-        .lang-menu a::after {
-            display: none !important;
-        }
-
-        .lang-menu a:hover {
-            background: var(--light-50);
-            color: var(--gold-600) !important;
-        }
-        
-        .mobile-lang-switch {
-            border-top: 1px solid var(--light-200);
-            margin-top: 1rem;
-            padding-top: 1rem;
-        }
-        
-        .mobile-lang-switch a {
-            display: flex !important;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: none !important;
-            font-size: 0.95rem !important;
-            color: var(--text-primary) !important;
-        }
-"""
-
 DESKTOP_NAV_SEARCH = '                    <li><a href="tel:0914744333" class="nav-cta"><i class="fas fa-phone-alt"></i> Gọi Ngay</a></li>'
 DESKTOP_NAV_REPLACE = """                    <li><a href="tel:0914744333" class="nav-cta"><i class="fas fa-phone-alt"></i> Gọi Ngay</a></li>
                     <li class="lang-selector">
                         <button class="lang-btn" aria-haspopup="true" aria-expanded="false">
-                            <span class="flag">🇻🇳</span> Tiếng Việt <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px;"></i>
+                            <span class="flag" loading="lazy">🇻🇳</span> Tiếng Việt <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px;"></i>
                         </button>
                         <ul class="lang-menu">
                             <li><a href="en.html"><span class="flag" style="font-size:1.2rem;">🇺🇸</span> English</a></li>
@@ -149,9 +53,9 @@ TRANSLATIONS: Dict[str, str] = {
     'lang="vi"': 'lang="en"',
     
     # Lang switcher update for en.html
-    '<img src="https://flagcdn.com/w20/vn.png" srcset="https://flagcdn.com/w40/vn.png 2x" alt="VN" class="flag"> Tiếng Việt <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>': '<img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="US" class="flag" style="width:22px; border-radius:2px;"> English <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>',
-    '<li><a href="en.html"><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="US" class="flag" style="width:20px; border-radius:2px;"> English</a></li>': '<li><a href="index.html"><img src="https://flagcdn.com/w20/vn.png" srcset="https://flagcdn.com/w40/vn.png 2x" alt="VN" class="flag" style="width:20px; border-radius:2px;"> Tiếng Việt (Vietnamese)</a></li>',
-    '<a href="en.html"><img src="https://flagcdn.com/w20/us.png" alt="US" style="width:22px; border-radius:2px;"> Switch to English</a>': '<a href="index.html"><img src="https://flagcdn.com/w20/vn.png" alt="VN" style="width:22px; border-radius:2px;"> Đổi sang Tiếng Việt</a>',
+    '<img src="https://flagcdn.com/w20/vn.png" srcset="https://flagcdn.com/w40/vn.png 2x" alt="VN" class="flag" loading="lazy"> Tiếng Việt <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>': '<img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="US" class="flag" style="width:22px; border-radius:2px;" loading="lazy"> English <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>',
+    '<li><a href="en.html"><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="US" class="flag" style="width:20px; border-radius:2px;" loading="lazy"> English</a></li>': '<li><a href="index.html"><img src="https://flagcdn.com/w20/vn.png" srcset="https://flagcdn.com/w40/vn.png 2x" alt="VN" class="flag" style="width:20px; border-radius:2px;" loading="lazy"> Tiếng Việt (Vietnamese)</a></li>',
+    '<a href="en.html"><img src="https://flagcdn.com/w20/us.png" alt="US" style="width:22px; border-radius:2px;" loading="lazy"> Switch to English</a>': '<a href="index.html"><img src="https://flagcdn.com/w20/vn.png" alt="VN" style="width:22px; border-radius:2px;" loading="lazy"> Đổi sang Tiếng Việt</a>',
     
     # Top bar
     "Thứ Hai – Chủ Nhật": "Monday – Sunday",
@@ -310,16 +214,6 @@ class SiteTranslator:
     def inject_components(self) -> None:
         """Injects missing language selector code into index.html if absent."""
         changes_made = False
-        
-        # Inject CSS
-        if '.lang-selector {' not in self.content:
-            logging.info("Missing '.lang-selector' CSS. Injecting styles into index.html.")
-            self.content = self.content.replace(
-                LANG_SELECTOR_CSS_MARKER, 
-                LANG_SELECTOR_CSS_TO_ADD + '\\n        ' + LANG_SELECTOR_CSS_MARKER, 
-                1
-            )
-            changes_made = True
 
         # Inject Desktop Nav
         if 'class="lang-selector"' not in self.content:
