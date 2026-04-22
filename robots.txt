@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /.agent/
+Disallow: /.git/
+
+Sitemap: https://happyhouselaundry.com/sitemap.xml
