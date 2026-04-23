@@ -1,5 +1,6 @@
-User-agent: *
-Allow: /
+User-agent: Googlebot
+Allow: /favicon.ico
+Allow: /Picture/
 Disallow: /.agent/
 Disallow: /.git/
 Disallow: /*.py$
