@@ -2,5 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /.agent/
 Disallow: /.git/
+Disallow: /*.py$
+Disallow: /extract_code.py
+Disallow: /format_code.py
+Disallow: /generate_en.py
 
+# Sitemap location
 Sitemap: https://happyhouselaundry.com/sitemap.xml

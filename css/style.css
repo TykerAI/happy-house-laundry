@@ -685,18 +685,18 @@
            ============================================================ */
         #button-contact-vr {
             position: fixed;
-            bottom: 40px;
-            left: 30px;
+            bottom: 30px;
+            left: 16px;
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         #button-contact-vr .contact-btn {
             position: relative;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2048,6 +2048,99 @@
 
             .back-to-top {
                 bottom: 20px;
-                right: 20px;
+                right: 16px;
+            }
+
+            /* Compact floating buttons on small phones */
+            #button-contact-vr {
+                bottom: 20px;
+                left: 10px;
+                gap: 8px;
+            }
+
+            #button-contact-vr .contact-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            #button-contact-vr .contact-circle {
+                width: 40px;
+                height: 40px;
+            }
+
+            #button-contact-vr .contact-circle i {
+                font-size: 18px;
+            }
+
+            /* Hide phone bar label on mobile to prevent overflow */
+            .phone-bar {
+                display: none;
+            }
+
+            /* Show phone tooltip instead */
+            .contact-phone .contact-tooltip {
+                display: flex;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-actions .btn {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .btn {
+                font-size: 0.82rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .cta-banner {
+                padding: 2rem 1.25rem;
+            }
+
+            .map-info {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .hero {
+                padding-block: 3rem 4rem;
+            }
+
+            .hero-badge {
+                width: 100px;
+                height: 100px;
+                bottom: -1rem;
+                right: -0.75rem;
+            }
+
+            .hero-badge .badge-num {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ============================================================
+           PERFORMANCE: Reduce motion for users who prefer it
+           ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-right {
+                opacity: 1;
+                transform: none;
             }
         }
