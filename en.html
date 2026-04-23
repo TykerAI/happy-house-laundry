@@ -225,10 +225,18 @@
                 </ul>
             </nav>
 
-            <!-- Mobile hamburger -->
-            <button class="hamburger" id="hamburger-btn" aria-label="Mở menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            <!-- Mobile: Language Switcher + Hamburger -->
+            <div class="mobile-controls">
+                <a href="index.html" class="mobile-lang-btn" aria-label="Đổi sang Tiếng Việt">
+                    <img src="https://flagcdn.com/w20/vn.png"
+                        srcset="https://flagcdn.com/w40/vn.png 2x"
+                        alt="VN" loading="lazy">
+                    <span>VI</span>
+                </a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Nav Drawer -->
@@ -239,10 +247,6 @@
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
             <a href="tel:0914744333" class="mobile-cta"><i class="fas fa-phone-alt"></i> Call Now: 0914 744 333</a>
-            <div class="mobile-lang-switch">
-                <a href="index.html"><img src="https://flagcdn.com/w20/vn.png" alt="VN"
-                        style="width:22px; border-radius:2px;" loading="lazy"> Đổi sang Tiếng Việt</a>
-            </div>
         </div>
     </header>
 

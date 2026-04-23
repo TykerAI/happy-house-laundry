@@ -1,23 +1,66 @@
-// --- Mobile Navigation ---
+/* ============================================================
+   MAIN.JS — Happy House Laundry
+   Premium interactions: Nav, Reveal, Counter, Scroll UX
+   ============================================================ */
+
+// ── Utility: debounce for scroll events ──
+function debounce(fn, delay) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+    };
+}
+
+// ── Mobile Navigation ──
 const hamburger = document.getElementById('hamburger-btn');
 const mobileNav = document.getElementById('mobile-nav');
 
-hamburger.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen.toString());
+function openMobileNav() {
+    mobileNav.classList.add('open');
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Đóng menu');
+}
+
+function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Mở menu');
+}
+
+hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = mobileNav.classList.contains('open');
+    isOpen ? closeMobileNav() : openMobileNav();
 });
 
 // Close mobile nav on link click
 mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMobileNav);
 });
 
-// --- Scroll Reveal ---
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (
+        mobileNav.classList.contains('open') &&
+        !mobileNav.contains(e.target) &&
+        !hamburger.contains(e.target)
+    ) {
+        closeMobileNav();
+    }
+});
+
+// Close mobile nav on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        closeMobileNav();
+        hamburger.focus();
+    }
+});
+
+// ── Scroll Reveal ──
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -27,17 +70,18 @@ const revealObserver = new IntersectionObserver((entries) => {
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-// --- Animated Counter ---
+// ── Animated Counter ──
 function animateCounter(el, target, duration, suffix) {
     const start = performance.now();
     const update = (now) => {
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target) + (progress < 1 ? '' : suffix);
+        const current = Math.floor(eased * target);
+        el.textContent = current + (progress < 1 ? '' : suffix);
         if (progress < 1) requestAnimationFrame(update);
         else el.textContent = target + suffix;
     };
@@ -50,7 +94,6 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const el = entry.target;
             const target = parseInt(el.dataset.count, 10);
-            // Support custom suffix via data-suffix attribute (e.g. "%" for 100%)
             const suffix = el.dataset.suffix || '+';
             animateCounter(el, target, 1800, suffix);
             counterObserver.unobserve(el);
@@ -60,20 +103,21 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 counterEls.forEach(el => counterObserver.observe(el));
 
-// --- Back to Top ---
+// ── Back to Top ──
 const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', debounce(() => {
     if (window.scrollY > 400) {
         backToTop.classList.add('show');
     } else {
         backToTop.classList.remove('show');
     }
-});
+}, 50));
+
 backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// --- Smooth scroll for anchor links (offset for sticky nav) ---
+// ── Smooth scroll for anchor links (offset for sticky nav) ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
         const targetId = anchor.getAttribute('href');
@@ -83,8 +127,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             e.preventDefault();
             const navH = document.getElementById('main-nav').offsetHeight;
             const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
-            // JS scroll override needed for nav offset — CSS smooth-behavior handles other cases
             window.scrollTo({ top, behavior: 'smooth' });
         }
     });
 });
+
+// ── Active Nav Link on Scroll ──
+const sections = document.querySelectorAll('main section[id], main div[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav a[href^="#"]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}, {
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+});
+
+sections.forEach(section => sectionObserver.observe(section));

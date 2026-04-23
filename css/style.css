@@ -171,6 +171,8 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            height: 100%;
         }
 
         body {
@@ -179,6 +181,11 @@
             color: var(--text-secondary);
             line-height: 1.7;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            /* Ngăn fixed elements đẩy scroll height */
+            isolation: isolate;
         }
 
         img {
@@ -583,9 +590,14 @@
             color: var(--gold-600);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             transform: scaleX(1);
             transform-origin: left;
+        }
+
+        .nav-links a.active {
+            color: var(--gold-600);
         }
 
         .nav-links .nav-cta {
@@ -604,6 +616,50 @@
 
         .nav-links .nav-cta::after {
             display: none;
+        }
+
+        /* Mobile controls wrapper (lang btn + hamburger) */
+        .mobile-controls {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Mobile language switcher button */
+        .mobile-lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.625rem;
+            border-radius: 8px;
+            border: 1.5px solid var(--border-medium);
+            background: var(--white);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s, color 0.2s;
+            min-height: 36px;
+        }
+
+        .mobile-lang-btn img {
+            width: 20px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .mobile-lang-btn span {
+            line-height: 1;
+        }
+
+        .mobile-lang-btn:hover {
+            border-color: var(--gold-500);
+            background: var(--gold-100);
+            color: var(--gold-700);
         }
 
         /* Mobile hamburger */
@@ -1692,6 +1748,7 @@
             border-top: 4px solid var(--gold-500);
             padding-top: 4rem;
             padding-bottom: 2rem;
+            margin-bottom: 0;
         }
 
         .footer-grid {
@@ -1871,7 +1928,7 @@
             justify-content: center;
             font-size: 1.1rem;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 940;
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -1946,17 +2003,36 @@
         }
 
         /* ============================================================
-           RESPONSIVE
+           RESPONSIVE — WORLD-CLASS MOBILE-FIRST SYSTEM
            ============================================================ */
+
+        /* ── Large Tablet (≤1024px) ── */
         @media (max-width: 1024px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
             }
 
             .hero-img-wrap {
-                max-width: 480px;
+                max-width: 460px;
                 margin-inline: auto;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-tag {
+                margin-inline: auto;
+            }
+
+            .hero-features {
+                max-width: 440px;
+                margin-inline: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
             }
 
             .why-inner {
@@ -1966,23 +2042,37 @@
 
             .why-orbit-wrap {
                 flex-direction: row;
+                justify-content: center;
             }
 
             .map-inner {
                 grid-template-columns: 1fr;
             }
-        }
 
-        @media (max-width: 768px) {
-            :root {
-                --space-xl: 4rem;
-                --space-lg: 2.5rem;
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
             }
 
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* ── Mobile (≤768px) ── */
+        @media (max-width: 768px) {
+            :root {
+                --space-xl: 3.5rem;
+                --space-lg: 2rem;
+                --space-md: 1.5rem;
+            }
+
+            /* === TOP BAR === */
             .top-bar {
                 display: none;
             }
 
+            /* === NAVBAR === */
             .nav-links {
                 display: none;
             }
@@ -1991,71 +2081,403 @@
                 display: flex;
             }
 
+            /* Show mobile controls wrapper (lang btn + hamburger) */
+            .mobile-controls {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo-img {
+                width: 44px;
+                height: 44px;
+            }
+
+            .logo-text-main {
+                font-size: 1.15rem;
+            }
+
+            .logo-text-sub {
+                font-size: 0.6rem;
+            }
+
+            /* Mobile nav — smooth slide-down animation */
+            .mobile-nav {
+                display: block;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                            opacity 0.3s ease,
+                            padding 0.3s ease;
+                padding: 0 var(--space-sm);
+                border-bottom: none;
+                box-shadow: none;
+            }
+
+            .mobile-nav.open {
+                display: block;
+                max-height: 600px;
+                opacity: 1;
+                padding: 1.25rem var(--space-sm);
+                border-bottom: 2px solid var(--border-subtle);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            }
+
+            .mobile-nav a {
+                padding: 0.875rem 0;
+                font-size: 0.95rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .mobile-nav .mobile-cta {
+                padding: 1rem;
+                font-size: 1rem;
+                min-height: 52px;
+                border-radius: 14px;
+            }
+
+            /* === FLOATING BUTTONS — di chuyển sang phải, thu nhỏ ===
+               Tránh che nội dung phía trái */
+            #button-contact-vr {
+                bottom: 80px; /* above sticky bar */
+                left: auto;
+                right: 14px;
+                gap: 8px;
+            }
+
+            #button-contact-vr .contact-btn {
+                width: 46px;
+                height: 46px;
+            }
+
+            #button-contact-vr .contact-circle {
+                width: 42px;
+                height: 42px;
+            }
+
+            #button-contact-vr .contact-circle i {
+                font-size: 19px;
+            }
+
+            /* Ẩn tooltip + phone bar trên mobile (không có hover) */
+            #button-contact-vr .contact-tooltip,
+            .phone-bar {
+                display: none !important;
+            }
+
+            /* Back to top — tránh sticky bar */
+            .back-to-top {
+                bottom: 80px;
+                right: 70px;
+            }
+
+            /* === HERO === */
+            .hero {
+                padding-block: 2.5rem 3.5rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content {
+                text-align: center;
+                order: 1;
+            }
+
+            .hero-img-wrap {
+                order: 2;
+                max-width: 340px;
+                margin-inline: auto;
+            }
+
+            .hero-tag {
+                margin-inline: auto;
+            }
+
+            .hero-title {
+                font-size: clamp(1.9rem, 7vw, 2.8rem);
+            }
+
+            .hero-desc {
+                font-size: 0.97rem;
+            }
+
+            .hero-features {
+                text-align: left;
+                max-width: 100%;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            /* Badge không bị cắt */
+            .hero-badge {
+                width: 110px;
+                height: 110px;
+                bottom: -1.25rem;
+                right: -0.5rem;
+            }
+
+            /* === TRUST STRIP === */
             .trust-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .trust-num {
+                font-size: 2.25rem;
             }
 
             .trust-divider {
                 display: none;
             }
 
+            /* === PILLARS === */
             .pillars-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
+            .pillar-card {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                text-align: left;
+                padding: 1.5rem;
+            }
+
+            .pillar-icon {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            /* === SERVICES — đẹp hơn trên mobile với 4:3 ratio === */
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
+            .service-card {
+                aspect-ratio: 4/3;
+                border-radius: 16px;
+            }
+
+            /* Show description always on mobile (no hover) */
+            .service-desc-sm {
+                max-height: 80px;
+                opacity: 1;
+            }
+
+            /* === WHY US === */
+            .why-orbit-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .orbit-ring {
+                width: 200px;
+                height: 200px;
+            }
+
+            .orbit-core {
+                width: 100px;
+                height: 100px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 0.875rem;
+            }
+
+            .benefit-item {
+                padding: 1rem;
+            }
+
+            /* === PROCESS === */
             .process-steps {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .process-steps::before {
                 display: none;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
+            /* === CTA BANNER === */
+            .cta-banner {
+                padding: 2.5rem 1.5rem;
+                border-radius: 16px;
             }
 
+            .cta-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .cta-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* === MAP / CONTACT === */
+            .map-inner {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .map-embed-wrap {
+                min-height: 280px;
+                border-radius: 16px;
+            }
+
+            .map-embed-wrap iframe {
+                min-height: 280px;
+            }
+
+            .map-info {
+                padding: 1.75rem;
+            }
+
+            /* === FOOTER === */
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .cta-banner {
-                padding: 2.5rem 1.5rem;
+            /* Ẩn Facebook iframe trên mobile — chậm, không cần thiết */
+            .footer-grid > div:last-child {
+                display: none;
             }
 
-            .why-orbit-wrap {
-                flex-direction: column;
+            /* === SECTION HEADER === */
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: clamp(1.65rem, 6vw, 2.3rem);
+            }
+
+            /* === BODY PADDING for sticky bar === */
+            body {
+                padding-bottom: 68px;
             }
         }
 
+        /* ── Small Mobile (≤480px) ── */
         @media (max-width: 480px) {
-            .trust-grid {
-                grid-template-columns: 1fr 1fr;
+            :root {
+                --space-xl: 2.75rem;
+                --space-lg: 1.75rem;
             }
 
+            .container {
+                width: min(100%, 100% - 2rem);
+            }
+
+            /* === HERO === */
+            .hero {
+                padding-block: 2rem 3rem;
+            }
+
+            .hero-img-wrap {
+                max-width: 280px;
+            }
+
+            .hero-badge {
+                width: 90px;
+                height: 90px;
+                bottom: -0.75rem;
+                right: -0.5rem;
+            }
+
+            .hero-badge .badge-num {
+                font-size: 1.6rem;
+            }
+
+            .hero-badge .badge-label {
+                font-size: 0.55rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 1.5rem;
+            }
+
+            /* === TRUST === */
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .trust-num {
+                font-size: 2rem;
+            }
+
+            .trust-strip {
+                padding: 2rem 0;
+            }
+
+            /* === SERVICES === */
+            .service-card {
+                aspect-ratio: 3/2;
+            }
+
+            .service-overlay {
+                padding: 1.25rem;
+            }
+
+            .service-name {
+                font-size: 1.1rem;
+            }
+
+            /* === PROCESS === */
             .process-steps {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .floating-social {
-                left: 8px;
+            .process-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                text-align: left;
             }
 
-            .back-to-top {
-                bottom: 20px;
-                right: 16px;
+            .step-num {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.1rem;
+                flex-shrink: 0;
+                margin: 0;
             }
 
-            /* Compact floating buttons on small phones */
+            /* === CTA === */
+            .cta-banner {
+                padding: 2rem 1rem;
+                border-radius: 14px;
+            }
+
+            /* === FLOATING BUTTONS === */
             #button-contact-vr {
-                bottom: 20px;
-                left: 10px;
-                gap: 8px;
+                bottom: 76px;
+                right: 10px;
+                gap: 6px;
             }
 
             #button-contact-vr .contact-btn {
@@ -2069,61 +2491,83 @@
             }
 
             #button-contact-vr .contact-circle i {
-                font-size: 18px;
+                font-size: 17px;
             }
 
-            /* Hide phone bar label on mobile to prevent overflow */
-            .phone-bar {
-                display: none;
+            .back-to-top {
+                bottom: 76px;
+                right: 62px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.95rem;
             }
 
-            /* Show phone tooltip instead */
-            .contact-phone .contact-tooltip {
-                display: flex;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .hero-actions .btn {
-                justify-content: center;
-                width: 100%;
-            }
-
+            /* === MISC === */
             .btn {
-                font-size: 0.82rem;
-                padding: 0.8rem 1.5rem;
+                font-size: 0.83rem;
+                padding: 0.85rem 1.5rem;
             }
 
             .section-header {
-                margin-bottom: 2.5rem;
+                margin-bottom: 2rem;
             }
 
-            .cta-banner {
-                padding: 2rem 1.25rem;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.25rem;
+            }
+        }
+
+        /* ── Extra Small (≤375px — iPhone SE, older Androids) ── */
+        @media (max-width: 375px) {
+            .hero-img-wrap {
+                max-width: 240px;
             }
 
-            .map-info {
-                padding: 1.5rem 1.25rem;
-            }
-
-            .hero {
-                padding-block: 3rem 4rem;
+            .hero-title {
+                font-size: 1.7rem;
             }
 
             .hero-badge {
-                width: 100px;
-                height: 100px;
-                bottom: -1rem;
-                right: -0.75rem;
+                width: 78px;
+                height: 78px;
             }
 
             .hero-badge .badge-num {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
+            }
+
+            .navbar {
+                padding: 0.6rem 0;
+            }
+
+            .logo-img {
+                width: 38px;
+                height: 38px;
+            }
+
+            .logo-text-main {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.55rem;
+            }
+
+            .trust-num {
+                font-size: 1.75rem;
+            }
+
+            .pillar-card {
+                padding: 1.25rem;
+            }
+
+            .cta-banner {
+                padding: 1.75rem 0.875rem;
             }
         }
+
 
         /* ============================================================
            PERFORMANCE: Reduce motion for users who prefer it
