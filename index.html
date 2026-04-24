@@ -16,9 +16,9 @@
         content="Dịch vụ giặt sấy cao cấp tại Đà Nẵng. Lấy & trả tận nơi, công nghệ hiện đại, chất lượng xuất sắc.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://happyhouselaundry.com/">
-    <meta property="og:image" content="https://happyhouselaundry.com/Picture/logo.jpg">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="800">
+    <meta property="og:image" content="https://happyhouselaundry.com/Picture/android-chrome-512x512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
     <meta property="og:image:alt" content="Happy House Laundry - Giặt Sấy Chuyên Nghiệp Đà Nẵng">
     <meta property="og:locale" content="vi_VN">
     <meta property="og:locale:alternate" content="en_US">
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Happy House Laundry — Giặt Sấy Chuyên Nghiệp Đà Nẵng">
     <meta name="twitter:description"
         content="Dịch vụ giặt sấy cao cấp tại Đà Nẵng. Lấy & trả tận nơi, công nghệ hiện đại, chất lượng xuất sắc.">
-    <meta name="twitter:image" content="https://happyhouselaundry.com/Picture/logo.jpg">
+    <meta name="twitter:image" content="https://happyhouselaundry.com/Picture/android-chrome-512x512.png">
 
     <!-- SEO Technical -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -66,9 +66,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Preload hero image for LCP optimization -->
-    <link rel="preload" as="image" href="/Picture/picture1.jpg">
+    <link rel="preload" as="image" href="/Picture/picture1.jpg" fetchpriority="high">
 
-    <!-- JSON-LD LocalBusiness Schema (Enhanced) -->
+    <!-- JSON-LD LocalBusiness Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,8 +79,13 @@
       "url": "https://happyhouselaundry.com/",
       "telephone": "+84914744333",
       "email": "happyhouselaundry@gmail.com",
-      "image": "https://happyhouselaundry.com/Picture/logo.jpg",
-      "logo": "https://happyhouselaundry.com/Picture/logo.jpg",
+      "image": "https://happyhouselaundry.com/Picture/android-chrome-512x512.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://happyhouselaundry.com/Picture/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      },
       "priceRange": "$$",
       "currenciesAccepted": "VND",
       "paymentAccepted": "Cash, Bank Transfer",
@@ -121,6 +126,20 @@
         "worstRating": "1",
         "reviewCount": "200"
       },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Shane Glazer"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "While visiting Da Nang we dropped off our laundry at Happy House Laundry. They were very nice, fair priced, and did a terrific job. They even brought the laundry back to us at our hotel when it was finished. I highly recommend Happy House Laundry for your laundry needs in Da Nang!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Gen X"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "They did excellent service. Clothes were clean folded and smelled fresh. They are quite popular with the hotels in the area. Pricing is fair considering the service that they provided. Will use them again next time!"
+        }
+      ],
       "service": [
         {"@type": "Service", "name": "Giặt sấy tận nơi"},
         {"@type": "Service", "name": "Giặt khô cao cấp"},

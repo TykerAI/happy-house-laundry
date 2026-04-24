@@ -16,9 +16,9 @@
         content="Premium laundry services in Da Nang. Door-to-door pick-up & delivery, modern technology, outstanding quality.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://happyhouselaundry.com/en.html">
-    <meta property="og:image" content="https://happyhouselaundry.com/Picture/logo.jpg">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="800">
+    <meta property="og:image" content="https://happyhouselaundry.com/Picture/android-chrome-512x512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
     <meta property="og:image:alt" content="Happy House Laundry - Premium Laundry Services Da Nang">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="vi_VN">
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Happy House Laundry — Premium Laundry Services Da Nang">
     <meta name="twitter:description"
         content="Premium laundry services in Da Nang. Door-to-door pick-up & delivery, modern technology, outstanding quality.">
-    <meta name="twitter:image" content="https://happyhouselaundry.com/Picture/logo.jpg">
+    <meta name="twitter:image" content="https://happyhouselaundry.com/Picture/android-chrome-512x512.png">
 
     <!-- SEO Technical -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -67,58 +67,88 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Preload hero image for LCP optimization -->
-    <link rel="preload" as="image" href="/Picture/picture1.jpg">
+    <link rel="preload" as="image" href="/Picture/picture1.jpg" fetchpriority="high">
 
-    <!-- JSON-LD LocalBusiness Schema -->
+    <!-- JSON-LD LocalBusiness Schema (Enhanced) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://happyhouselaundry.com/#business",
-      "name": "Happy House Laundry",
-      "description": "Da Nang's leading premium laundry service. Door-to-door delivery, modern equipment, 100% quality guarantee.",
-      "url": "https://happyhouselaundry.com/",
-      "telephone": "+84914744333",
-      "email": "happyhouselaundry@gmail.com",
-      "image": "https://happyhouselaundry.com/Picture/logo.jpg",
-      "logo": "https://happyhouselaundry.com/Picture/logo.jpg",
-      "priceRange": "$$",
-      "currenciesAccepted": "VND",
-      "paymentAccepted": "Cash, Bank Transfer",
-      "areaServed": {"@type": "City", "name": "Da Nang"},
-      "address": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://happyhouselaundry.com/en.html#business",
+    "name": "Happy House Laundry",
+    "description": "Professional laundry service in Da Nang. Pick-up & delivery, modern equipment, 100% quality guarantee.",
+    "url": "https://happyhouselaundry.com/en.html",
+    "telephone": "+84914744333",
+    "email": "happyhouselaundry@gmail.com",
+    "image": "https://happyhouselaundry.com/Picture/android-chrome-512x512.png",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://happyhouselaundry.com/Picture/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+    },
+    "priceRange": "$$",
+    "currenciesAccepted": "VND",
+    "paymentAccepted": "Cash, Bank Transfer",
+    "areaServed": {
+        "@type": "City",
+        "name": "Da Nang"
+    },
+    "address": {
         "@type": "PostalAddress",
         "streetAddress": "155 Hai Son",
         "addressLocality": "Hai Chau",
         "addressRegion": "Da Nang",
         "addressCountry": "VN",
         "postalCode": "550000"
-      },
-      "geo": {
+    },
+    "geo": {
         "@type": "GeoCoordinates",
         "latitude": 16.083034,
         "longitude": 108.213784
-      },
-      "hasMap": "https://maps.google.com/?q=16.083034,108.213784",
-      "openingHoursSpecification": [
+    },
+    "hasMap": "https://maps.google.com/?q=16.083034,108.213784",
+    "openingHoursSpecification": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "06:00",
-          "closes": "22:30"
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "06:00",
+        "closes": "22:30"
         }
-      ],
-      "sameAs": [
+    ],
+    "sameAs": [
         "https://www.facebook.com/happyhouse.155haison",
         "https://zalo.me/0914744333"
-      ],
-      "aggregateRating": {
+    ],
+    "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
         "bestRating": "5",
         "worstRating": "1",
         "reviewCount": "200"
-      }
+    },
+    "review": [
+        {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Shane Glazer"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "While visiting Da Nang we dropped off our laundry at Happy House Laundry. They were very nice, fair priced, and did a terrific job. They even brought the laundry back to us at our hotel when it was finished. I highly recommend Happy House Laundry for your laundry needs in Da Nang!"
+        },
+        {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Gen X"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "They did excellent service. Clothes were clean folded and smelled fresh. They are quite popular with the hotels in the area. Pricing is fair considering the service that they provided. Will use them again next time!"
+        }
+    ],
+    "service": [
+        {"@type": "Service", "name": "Pick-up & Delivery Laundry"},
+        {"@type": "Service", "name": "Dry Cleaning"},
+        {"@type": "Service", "name": "Curtain & Sofa Cleaning"},
+        {"@type": "Service", "name": "Sneaker Spa"},
+        {"@type": "Service", "name": "Hotel Laundry"},
+        {"@type": "Service", "name": "Industrial Laundry"}
+        ]
     }
     </script>
 
