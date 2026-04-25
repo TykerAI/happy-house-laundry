@@ -30,35 +30,37 @@ function closeMobileNav() {
     hamburger.setAttribute('aria-label', 'Mở menu');
 }
 
-hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = mobileNav.classList.contains('open');
-    isOpen ? closeMobileNav() : openMobileNav();
-});
+if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileNav.classList.contains('open');
+        isOpen ? closeMobileNav() : openMobileNav();
+    });
 
-// Close mobile nav on link click
-mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMobileNav);
-});
+    // Close mobile nav on link click
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+    });
 
-// Close mobile nav when clicking outside
-document.addEventListener('click', (e) => {
-    if (
-        mobileNav.classList.contains('open') &&
-        !mobileNav.contains(e.target) &&
-        !hamburger.contains(e.target)
-    ) {
-        closeMobileNav();
-    }
-});
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', (e) => {
+        if (
+            mobileNav.classList.contains('open') &&
+            !mobileNav.contains(e.target) &&
+            !hamburger.contains(e.target)
+        ) {
+            closeMobileNav();
+        }
+    });
 
-// Close mobile nav on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
-        closeMobileNav();
-        hamburger.focus();
-    }
-});
+    // Close mobile nav on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+            closeMobileNav();
+            hamburger.focus();
+        }
+    });
+}
 
 // ── Scroll Reveal ──
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -105,17 +107,19 @@ counterEls.forEach(el => counterObserver.observe(el));
 
 // ── Back to Top ──
 const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', debounce(() => {
-    if (window.scrollY > 400) {
-        backToTop.classList.add('show');
-    } else {
-        backToTop.classList.remove('show');
-    }
-}, 50));
+if (backToTop) {
+    window.addEventListener('scroll', debounce(() => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    }, 50));
 
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // ── Smooth scroll for anchor links (offset for sticky nav) ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -125,7 +129,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(targetId);
         if (target) {
             e.preventDefault();
-            const navH = document.getElementById('main-nav').offsetHeight;
+            const mainNav = document.getElementById('main-nav');
+            const navH = mainNav ? mainNav.offsetHeight : 0;
             const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
             window.scrollTo({ top, behavior: 'smooth' });
         }
