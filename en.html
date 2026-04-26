@@ -263,8 +263,21 @@
     <div class="top-bar" id="top-bar">
         <div class="container top-bar-inner">
             <div class="top-info">
-                <span><i class="fas fa-map-marker-alt"></i>155 Hai Son, Hai Chau Dist, Da Nang</span>
-                <span><i class="fas fa-clock"></i>06:00 – 22:30 | Mon – Sun</span>
+                <span style="font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fas fa-tags" style="color: var(--dark-950);"></i>
+                    <a href="#pricing">Price List</a>
+                </span>
+                <div class="lang-selector">
+                    <button class="lang-btn" aria-haspopup="true" aria-expanded="false" style="margin-left:0; font-size: 0.8rem;">
+                        <i class="fas fa-shield-alt" style="color: var(--dark-950);"></i> Policies <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>
+                    </button>
+                    <ul class="lang-menu" style="min-width: 240px; left: 0; right: auto;">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="compensation-claims-policy.html">Compensation & Claims</a></li>
+                    </ul>
+                </div>
+                <span><i class="fas fa-map-marker-alt"></i>155 Hai Son, Da Nang</span>
+                <span><i class="fas fa-clock"></i>06:00 – 22:30</span>
             </div>
             <div class="top-info">
                 <span><a href="mailto:happyhouselaundry@gmail.com">happyhouselaundry@gmail.com</a></span>
@@ -309,7 +322,15 @@
                 <ul class="nav-links">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li class="nav-dropdown">
+                        <a href="javascript:void(0)" style="cursor: default;">Policies <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 2px;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="compensation-claims-policy.html">Compensation & Claims</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#why-us">Benefits</a></li>
                     <li><a href="#process">Process</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="tel:0914744333" class="nav-cta"><i class="fas fa-phone-alt"></i> Call Now</a></li>
@@ -333,9 +354,13 @@
         <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile menu">
             <a href="#hero">Home</a>
             <a href="#services">Services</a>
-            <a href="#why-us">Why Us</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#why-us">Benefits</a>
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
+            <div style="height: 1px; background: rgba(0,0,0,0.1); margin: 0.5rem 0;"></div>
+            <a href="privacy-policy.html" style="font-size: 0.95rem; font-weight: 500;"><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i> Privacy Policy</a>
+            <a href="compensation-claims-policy.html" style="font-size: 0.95rem; font-weight: 500;"><i class="fas fa-undo" style="margin-right: 0.5rem;"></i> Compensation & Claims</a>
             <a href="tel:0914744333" class="mobile-cta"><i class="fas fa-phone-alt"></i> Call Now: 0914 744 333</a>
         </div>
     </header>
@@ -369,19 +394,20 @@
                     <div class="hero-content reveal-right">
                         <div class="hero-tag">
                             <i class="fas fa-bolt"></i>
-                            Premium Da Nang Laundry
+                            Reliable Partner in Da Nang
                         </div>
 
                         <h1 class="hero-title">
-                            Professional<br>
+                            Premium<br>
                             Laundry Care<br>
                             <span class="gold">Happy House Laundry</span>
                         </h1>
 
                         <p class="hero-desc">
-                            Evolving from a traditional shop, Happy House Laundry is now Da Nang's leading smart laundry
-                            model. We deliver <strong style="color: var(--text-primary);">door-to-door
-                                convenience</strong>, high-tech imported equipment, and a 100% spotless guarantee.
+                            With specialized expertise in the industry, we are committed to delivering clean, fresh, and
+                            perfectly sanitized garments. At Happy House Laundry, we center our service around <strong
+                                style="color: var(--text-primary);">"Trust - Quality - Speed - Affordability"</strong>,
+                            bringing you the best possible experience.
                         </p>
 
                         <ul class="hero-features">
@@ -444,36 +470,49 @@
         </div>
 
         <!-- ============================================================
-         THREE PILLARS (Core Value Proposition)
+         FOUR PILLARS (Core Value Proposition)
          ============================================================ -->
         <section class="section-pad section-dark" id="pillars">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">Our Commitment</span>
-                    <h2>Three Pillars of <span class="gold">Quality</span></h2>
-                    <p>Every garment you entrust to us is meticulously cared for using the highest industry standards.
-                    </p>
+                    <span class="section-label">Core Values</span>
+                    <h2>Our Service <span class="gold">Commitment</span></h2>
+                    <p>Discover a comfortable and convenient experience where every family finds dedicated care.</p>
                     <div class="gold-divider"></div>
                 </div>
 
-                <div class="pillars-grid">
+                <div class="pillars-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="pillar-card reveal delay-1">
-                        <div class="pillar-icon"><i class="fas fa-gem"></i></div>
-                        <h3 class="pillar-title">Premium Quality</h3>
-                        <p class="pillar-desc">Rigorous, professional processing down to the finest detail. Clothes are
-                            returned immaculately clean, retaining their original shape and vibrant colors.</p>
+                        <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Trust</h3>
+                            <p class="pillar-desc">For our loyal customers, we always listen and ensure your needs are
+                                meticulously and fully met.</p>
+                        </div>
                     </div>
                     <div class="pillar-card reveal delay-2">
-                        <div class="pillar-icon"><i class="fas fa-leaf"></i></div>
-                        <h3 class="pillar-title">Eco-Friendly & Safe</h3>
-                        <p class="pillar-desc">We use premium solvents that are safe for your skin and the environment,
-                            powered by energy-efficient 4.0 smart technology.</p>
+                        <div class="pillar-icon"><i class="fas fa-gem"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Quality</h3>
+                            <p class="pillar-desc">Committed to delivering clean, fresh, and perfectly antibacterial
+                                sanitized garments, caring for your clothes every day.</p>
+                        </div>
                     </div>
                     <div class="pillar-card reveal delay-3">
-                        <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="pillar-title">The Trust Guarantee</h3>
-                        <p class="pillar-desc">Backed by hundreds of genuine 5-star reviews. We offer completely free
-                            re-processing if you are not fully satisfied — trust is our core.</p>
+                        <div class="pillar-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Speed</h3>
+                            <p class="pillar-desc">Professional process with express door-to-door delivery. Free up your
+                                time for more important things.</p>
+                        </div>
+                    </div>
+                    <div class="pillar-card reveal delay-4">
+                        <div class="pillar-icon"><i class="fas fa-tags"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Affordability</h3>
+                            <p class="pillar-desc">Bringing you the best possible experience with highly competitive,
+                                transparent pricing and no hidden fees.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -496,7 +535,8 @@
 
                     <!-- Service 1 -->
                     <div class="service-card reveal delay-1">
-                        <img src="./Picture/giatdokhachsan.jpg" alt="Hotel and restaurant laundry service" loading="lazy">
+                        <img src="./Picture/giatdokhachsan.jpg" alt="Hotel and restaurant laundry service"
+                            loading="lazy">
                         <div class="service-overlay">
                             <div class="service-badge"><i class="fas fa-hotel"></i></div>
                             <h3 class="service-name">Hospitality Laundry</h3>
@@ -507,7 +547,8 @@
 
                     <!-- Service 2 -->
                     <div class="service-card reveal delay-2">
-                        <img src="./Picture/giatsaycanhan.jpg" alt="Personal wash and fold with pick-up and delivery" loading="lazy">
+                        <img src="./Picture/giatsaycanhan.jpg" alt="Personal wash and fold with pick-up and delivery"
+                            loading="lazy">
                         <div class="service-overlay">
                             <div class="service-badge"><i class="fas fa-tshirt"></i></div>
                             <h3 class="service-name">Personal Wash & Fold</h3>
@@ -562,6 +603,96 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         PRICING SECTION
+         ============================================================ -->
+        <section class="section-pad pricing-section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Service Price List</span>
+                    <h2><span class="gold">Wash - Dry - Fold</span> Services</h2>
+                    <p>Let us care for your clothes, so you can feel confident and comfortable every day!</p>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <div class="pricing-menu-wrapper reveal">
+                    <div class="pricing-list">
+                        <!-- Item 1 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Clothes</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">10,000 - 20,000 vnđ/kg</div>
+                            </div>
+                            <p class="pricing-item-desc">Under 2kg: 20,000 vnđ/kg</p>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Shoes</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">40,000 - 50,000 vnđ/pair</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Bed Sheets, Curtains</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">From 15,000 vnđ/kg</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Blanket</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">From 18,000 vnđ/kg</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Suit (Veston)</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">From 70,000 vnđ</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Ironing</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">From 15,000 vnđ/item</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Stain Removal</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Depends on stain type</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-rules reveal">
+                    <h3 class="gold">Rules</h3>
+                    <ul>
+                        <li><i class="fas fa-exclamation-circle"></i> 1. Empty your pockets</li>
+                        <li><i class="fas fa-exclamation-circle"></i> 2. Separate colors</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -701,8 +832,10 @@
                         style="display: block; height: 80px; margin: 0 auto 1.5rem auto; border-radius: 12px;"
                         loading="lazy">
                     <h2>Ready to Experience<br><span
-                            style="color: var(--white); text-shadow: 0 2px 5px rgba(0,0,0,0.15);">Our Services?</span></h2>
-                    <p>More than 1,000 families in Da Nang trust Happy House Laundry.<br>Let us take care of your wardrobe today.</p>
+                            style="color: var(--white); text-shadow: 0 2px 5px rgba(0,0,0,0.15);">Our Services?</span>
+                    </h2>
+                    <p>More than 1,000 families in Da Nang trust Happy House Laundry.<br>Let us take care of your
+                        wardrobe today.</p>
                     <div class="cta-actions">
                         <a href="tel:0914744333" class="btn btn-primary" id="cta-banner-call">
                             <i class="fas fa-phone-alt"></i> Call Now: 0914 744 333
@@ -817,7 +950,8 @@
                         Da Nang's premier premium laundry service — delivering exceptional cleanliness, unrivaled
                         convenience, and absolute trust for every household.
                     </p>
-                    <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i> 155 Hai Son, Hai Chau District, Da Nang</div>
+                    <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i> 155 Hai Son, Hai Chau
+                        District, Da Nang</div>
                     <div class="footer-contact-row"><i class="fas fa-clock"></i> Mon – Sun: 06:00 – 22:30</div>
                     <div class="footer-contact-row"><i class="fas fa-envelope"></i> <a
                             href="mailto:happyhouselaundry@gmail.com">happyhouselaundry@gmail.com</a></div>
@@ -843,10 +977,11 @@
 
                 <!-- Info Col -->
                 <div>
-                    <h4 class="footer-title">Policies & Quick Links</h4>
+                    <h4 class="footer-title">Policies</h4>
                     <ul class="footer-links">
                         <li><a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
-                        <li><a href="compensation-claims-policy.html"><i class="fas fa-undo"></i> Compensation & Claims Policy</a></li>
+                        <li><a href="compensation-claims-policy.html"><i class="fas fa-undo"></i> Compensation & Claims
+                                Policy</a></li>
                         <li><a href="#contact"><i class="fas fa-store"></i> Headquarters: 155 Hai Son</a></li>
                     </ul>
                     <div class="footer-socials">

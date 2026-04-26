@@ -262,8 +262,21 @@
     <div class="top-bar" id="top-bar">
         <div class="container top-bar-inner">
             <div class="top-info">
-                <span><i class="fas fa-map-marker-alt"></i>155 Hải Sơn, Hải Châu, Đà Nẵng</span>
-                <span><i class="fas fa-clock"></i>06:00 – 22:30 | Thứ Hai – Chủ Nhật</span>
+                <span style="font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fas fa-tags" style="color: var(--dark-950);"></i>
+                    <a href="#pricing">Bảng Giá</a>
+                </span>
+                <div class="lang-selector">
+                    <button class="lang-btn" aria-haspopup="true" aria-expanded="false" style="margin-left:0; font-size: 0.8rem;">
+                        <i class="fas fa-shield-alt" style="color: var(--dark-950);"></i> Chính Sách <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:2px; color: var(--dark-800);"></i>
+                    </button>
+                    <ul class="lang-menu" style="min-width: 240px; left: 0; right: auto;">
+                        <li><a href="privacy-policy-vi.html">Điều khoản bảo mật thông tin</a></li>
+                        <li><a href="compensation-claims-policy-vi.html">Chính sách bồi thường, xử lý lỗi</a></li>
+                    </ul>
+                </div>
+                <span><i class="fas fa-map-marker-alt"></i>155 Hải Sơn, Đà Nẵng</span>
+                <span><i class="fas fa-clock"></i>06:00 – 22:30</span>
             </div>
             <div class="top-info">
                 <span><a href="mailto:happyhouselaundry@gmail.com">happyhouselaundry@gmail.com</a></span>
@@ -306,6 +319,14 @@
                 <ul class="nav-links">
                     <li><a href="#hero">Trang Chủ</a></li>
                     <li><a href="#services">Dịch Vụ</a></li>
+                    <li><a href="#pricing">Bảng Giá</a></li>
+                    <li class="nav-dropdown">
+                        <a href="javascript:void(0)" style="cursor: default;">Chính Sách <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 2px;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="privacy-policy-vi.html">Điều khoản bảo mật</a></li>
+                            <li><a href="compensation-claims-policy-vi.html">Bồi thường & xử lý lỗi</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#why-us">Ưu Điểm</a></li>
                     <li><a href="#process">Quy Trình</a></li>
                     <li><a href="#contact">Liên Hệ</a></li>
@@ -330,9 +351,13 @@
         <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Menu di động">
             <a href="#hero">Trang Chủ</a>
             <a href="#services">Dịch Vụ</a>
+            <a href="#pricing">Bảng Giá</a>
             <a href="#why-us">Ưu Điểm</a>
             <a href="#process">Quy Trình</a>
             <a href="#contact">Liên Hệ</a>
+            <div style="height: 1px; background: rgba(0,0,0,0.1); margin: 0.5rem 0;"></div>
+            <a href="privacy-policy-vi.html" style="font-size: 0.95rem; font-weight: 500;"><i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i> Điều khoản bảo mật</a>
+            <a href="compensation-claims-policy-vi.html" style="font-size: 0.95rem; font-weight: 500;"><i class="fas fa-undo" style="margin-right: 0.5rem;"></i> Bồi thường, xử lý lỗi</a>
             <a href="tel:0914744333" class="mobile-cta"><i class="fas fa-phone-alt"></i> Gọi Ngay: 0914 744 333</a>
         </div>
     </header>
@@ -366,20 +391,20 @@
                     <div class="hero-content reveal-right">
                         <div class="hero-tag">
                             <i class="fas fa-bolt"></i>
-                            Dịch vụ giặt ủi Đà Nẵng
+                            Đối tác tin cậy tại Đà Nẵng
                         </div>
 
                         <h1 class="hero-title">
-                            Giặt Sấy<br>
-                            Chuyên Nghiệp<br>
+                            Giặt Ủi<br>
+                            Chất Lượng<br>
                             <span class="gold">Happy House Laundry</span>
                         </h1>
 
                         <p class="hero-desc">
-                            Từ một tiệm giặt truyền thống, Happy House Laundry vươn mình trở thành
-                            mô hình giặt ủi thông minh hàng đầu Đà Nẵng — mang đến dịch vụ
-                            <strong style="color: var(--text-primary);">lấy & trả tận nơi</strong>,
-                            thiết bị công nghệ cao, và cam kết không vết bẩn 100%.
+                            Với kinh nghiệm chuyên sâu trong nghề, chúng tôi cam kết mang đến sản phẩm sạch sẽ, thơm mát
+                            và an toàn sạch vi khuẩn. Đến với Happy House Laundry, chúng tôi luôn đặt <strong
+                                style="color: var(--text-primary);">"Uy Tín - Chất Lượng - Nhanh Chóng - Giá
+                                Rẻ"</strong> làm trọng tâm, mang lại trải nghiệm tốt nhất cho khách hàng.
                         </p>
 
                         <ul class="hero-features">
@@ -442,36 +467,49 @@
         </div>
 
         <!-- ============================================================
-         THREE PILLARS (Core Value Proposition)
+         FOUR PILLARS (Core Value Proposition)
          ============================================================ -->
         <section class="section-pad section-dark" id="pillars">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">Cam Kết Của Chúng Tôi</span>
-                    <h2>Ba Trụ Cột <span class="gold">Chất Lượng</span></h2>
-                    <p>Mỗi chiếc áo bạn trao cho chúng tôi đều được chăm sóc bằng quy trình chuẩn mực cao nhất.</p>
+                    <span class="section-label">Giá Trị Cốt Lõi</span>
+                    <h2>Trọng Tâm <span class="gold">Phục Vụ</span></h2>
+                    <p>Khám phá không gian thoải mái và tiện lợi, nơi mọi gia đình đều tìm thấy sự chăm sóc tận tâm.</p>
                     <div class="gold-divider"></div>
                 </div>
 
-                <div class="pillars-grid">
+                <div class="pillars-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="pillar-card reveal delay-1">
-                        <div class="pillar-icon"><i class="fas fa-gem"></i></div>
-                        <h3 class="pillar-title">Chất Lượng Cao Cấp</h3>
-                        <p class="pillar-desc">Quy trình chuyên nghiệp, khắt khe đến từng chi tiết. Quần áo được trả lại
-                            sạch tinh khôi, giữ trọn form dáng và màu sắc ban đầu.</p>
+                        <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Uy Tín</h3>
+                            <p class="pillar-desc">Với các bạn là Quý khách hàng thân thiết, chúng tôi luôn luôn lắng
+                                nghe và đáp ứng đúng mong muốn của các bạn.</p>
+                        </div>
                     </div>
                     <div class="pillar-card reveal delay-2">
-                        <div class="pillar-icon"><i class="fas fa-leaf"></i></div>
-                        <h3 class="pillar-title">Sạch & Thân Thiện Môi Trường</h3>
-                        <p class="pillar-desc">Dung môi an toàn cho da và sức khỏe, thân thiện với môi trường. Tiết kiệm
-                            năng lượng tối đa nhờ công nghệ vận hành 4.0 thông minh.</p>
+                        <div class="pillar-icon"><i class="fas fa-gem"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Chất Lượng</h3>
+                            <p class="pillar-desc">Cam kết mang đến sản phẩm sạch sẽ, thơm mát và an toàn sạch vi khuẩn,
+                                chăm sóc quần áo của bạn mỗi ngày.</p>
+                        </div>
                     </div>
                     <div class="pillar-card reveal delay-3">
-                        <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="pillar-title">Bảo Hành Niềm Tin</h3>
-                        <p class="pillar-desc">Hơn 200+ đánh giá 5 sao từ khách hàng thực. Xử lý lại hoàn toàn miễn phí
-                            nếu
-                            bạn chưa hài lòng — lấy uy tín làm cốt lõi.</p>
+                        <div class="pillar-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Nhanh Chóng</h3>
+                            <p class="pillar-desc">Quy trình chuyên nghiệp, giao nhận tận nơi siêu tốc. Giải phóng thời
+                                gian của bạn cho những việc quan trọng hơn.</p>
+                        </div>
+                    </div>
+                    <div class="pillar-card reveal delay-4">
+                        <div class="pillar-icon"><i class="fas fa-tags"></i></div>
+                        <div>
+                            <h3 class="pillar-title">Giá Rẻ</h3>
+                            <p class="pillar-desc">Mang lại trải nghiệm tốt nhất với mức giá cực kỳ cạnh tranh, minh
+                                bạch và không phát sinh chi phí ẩn.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -561,6 +599,96 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         PRICING SECTION
+         ============================================================ -->
+        <section class="section-pad pricing-section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Bảng Giá Dịch Vụ</span>
+                    <h2>Dịch Vụ <span class="gold">Giặt - Sấy - Gấp</span></h2>
+                    <p>Hãy để chúng tôi chăm sóc quần áo của bạn, để bạn luôn tự tin và thoải mái mỗi ngày!</p>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <div class="pricing-menu-wrapper reveal">
+                    <div class="pricing-list">
+                        <!-- Item 1 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Áo, Quần</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">10.000 - 20.000 vnđ/kg</div>
+                            </div>
+                            <p class="pricing-item-desc">Dưới 2kg: 20.000 vnđ/kg</p>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Giày</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">40.000 - 50.000 vnđ/đôi</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Ra Giường, Rèm Cửa</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Từ 15.000 vnđ/kg</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Chăn</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Từ 18.000 vnđ/kg</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Bộ Veston</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Từ 70.000 vnđ</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Ủi</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Từ 15.000 vnđ/cái</div>
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="pricing-item-group">
+                            <div class="pricing-item">
+                                <h3 class="pricing-item-name">Tẩy Vết Bẩn</h3>
+                                <div class="pricing-item-dots"></div>
+                                <div class="pricing-item-price">Tùy thuộc vào loại vết bẩn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-rules reveal">
+                    <h3 class="gold">Lưu ý</h3>
+                    <ul>
+                        <li><i class="fas fa-exclamation-circle"></i> 1. Kiểm tra kỹ túi quần áo</li>
+                        <li><i class="fas fa-exclamation-circle"></i> 2. Phân loại quần áo bị ra màu</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -837,10 +965,12 @@
 
                 <!-- Info Col -->
                 <div>
-                    <h4 class="footer-title">Chính Sách & Liên Kết</h4>
+                    <h4 class="footer-title">Chính Sách</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy-policy-vi.html"><i class="fas fa-shield-alt"></i> Điều khoản bảo mật thông tin</a></li>
-                        <li><a href="compensation-claims-policy-vi.html"><i class="fas fa-undo"></i> Chính sách bồi thường, xử lý lỗi</a></li>
+                        <li><a href="privacy-policy-vi.html"><i class="fas fa-shield-alt"></i> Điều khoản bảo mật thông
+                                tin</a></li>
+                        <li><a href="compensation-claims-policy-vi.html"><i class="fas fa-undo"></i> Chính sách bồi
+                                thường, xử lý lỗi</a></li>
                         <li><a href="#contact"><i class="fas fa-store"></i> Trụ sở chính: 155 Hải Sơn</a></li>
                     </ul>
                     <div class="footer-socials">

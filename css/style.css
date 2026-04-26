@@ -673,6 +673,59 @@ a {
     display: none;
 }
 
+/* Nav Dropdown */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    padding: 0.75rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s var(--ease-smooth);
+    z-index: 100;
+    border: 1px solid var(--border-subtle);
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+.dropdown-menu a:hover {
+    background: var(--light-50);
+    color: var(--gold-600);
+}
+
 /* Mobile controls */
 .mobile-controls {
     display: none;
@@ -1280,7 +1333,7 @@ a {
    SERVICES SECTION
    ============================================================ */
 .services-section {
-    background: var(--light-50);
+    background: var(--white);
 }
 
 .services-grid {
@@ -2556,6 +2609,148 @@ a {
 
     .cta-banner {
         padding: 1.75rem 0.875rem;
+    }
+}
+
+/* ============================================================
+   PRICING SECTION
+   ============================================================ */
+.pricing-section {
+    background: var(--light-50);
+    position: relative;
+}
+
+.pricing-menu-wrapper {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 3.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-menu-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+}
+
+.pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.pricing-item-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.pricing-item-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.pricing-item-dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted var(--border-medium);
+    opacity: 0.6;
+    position: relative;
+    top: -4px;
+}
+
+.pricing-item-price {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-600);
+    white-space: nowrap;
+}
+
+.pricing-item-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+    font-style: italic;
+}
+
+.pricing-rules {
+    background: var(--light-50);
+    border: 1px dashed var(--gold-400);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pricing-rules h3 {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+}
+
+.pricing-rules ul {
+    list-style: none;
+    text-align: left;
+    display: inline-block;
+}
+
+.pricing-rules li {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.pricing-rules li i {
+    color: var(--gold-500);
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .pricing-menu-wrapper {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .pricing-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .pricing-item-dots {
+        display: none;
+    }
+    
+    .pricing-item-name {
+        white-space: normal;
+        margin-bottom: 0.25rem;
+    }
+    
+    .pricing-item-price {
+        font-size: 1.15rem;
+        align-self: flex-start;
     }
 }
 
