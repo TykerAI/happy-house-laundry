@@ -1,9 +1,9 @@
 /* ============================================================
    MAIN.JS — Happy House Laundry
-   Premium interactions: Nav, Reveal, Counter, Scroll UX
+   Premium interactions: Nav, Reveal, Counter, Scroll UX, Lightbox
    ============================================================ */
 
-// ── Utility: debounce for scroll events ──
+// ── Utility: debounce ──
 function debounce(fn, delay) {
     let timer;
     return (...args) => {
@@ -37,12 +37,10 @@ if (hamburger && mobileNav) {
         isOpen ? closeMobileNav() : openMobileNav();
     });
 
-    // Close mobile nav on link click
     mobileNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', closeMobileNav);
     });
 
-    // Close mobile nav when clicking outside
     document.addEventListener('click', (e) => {
         if (
             mobileNav.classList.contains('open') &&
@@ -53,7 +51,6 @@ if (hamburger && mobileNav) {
         }
     });
 
-    // Close mobile nav on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
             closeMobileNav();
@@ -109,11 +106,7 @@ counterEls.forEach(el => counterObserver.observe(el));
 const backToTop = document.getElementById('back-to-top');
 if (backToTop) {
     window.addEventListener('scroll', debounce(() => {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
+        backToTop.classList.toggle('show', window.scrollY > 400);
     }, 50));
 
     backToTop.addEventListener('click', () => {
@@ -121,7 +114,7 @@ if (backToTop) {
     });
 }
 
-// ── Smooth scroll for anchor links (offset for sticky nav) ──
+// ── Smooth scroll for anchor links ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
         const targetId = anchor.getAttribute('href');
@@ -159,3 +152,202 @@ const sectionObserver = new IntersectionObserver((entries) => {
 });
 
 sections.forEach(section => sectionObserver.observe(section));
+
+// ── Review gallery horizontal controls ──
+const reviewScrollButtons = document.querySelectorAll('.review-scroll-btn');
+
+reviewScrollButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-scroll-target');
+        const direction = Number(btn.getAttribute('data-scroll-dir') || 1);
+        const track = targetId ? document.getElementById(targetId) : null;
+        if (!track) return;
+
+        const card = track.querySelector('.review-shot');
+        const baseWidth = card ? card.getBoundingClientRect().width : 180;
+        const gap = 12;
+        const distance = (baseWidth + gap) * 1.8 * direction;
+
+        track.scrollBy({ left: distance, behavior: 'smooth' });
+    });
+});
+
+// ── Lightbox Gallery ──
+// Xóa bất kỳ lightbox overlay cũ nào còn sót lại trong DOM
+['lb-overlay', 'lightbox'].forEach(id => {
+    const old = document.getElementById(id);
+    if (old) old.remove();
+});
+
+(function () {
+    let images = [];
+    let currentIndex = 0;
+    let touchStartX = 0;
+
+    // Tạo overlay DOM — chỉ 1 lần duy nhất
+    const overlay = document.createElement('div');
+    overlay.className = 'lb-overlay';
+    overlay.id = 'lb-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Image viewer');
+    overlay.innerHTML = `
+        <button class="lb-close-btn" id="lb-close" aria-label="Close">&#10005;</button>
+        <button class="lb-nav-btn lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+        <button class="lb-nav-btn lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+        <div class="lb-img-wrap">
+            <img class="lb-main-img" id="lb-img" src="" alt="">
+        </div>
+        <div class="lb-footer">
+            <div class="lb-counter" id="lb-counter" aria-live="polite"></div>
+            <div class="lb-dots" id="lb-dots" role="tablist"></div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbDots = document.getElementById('lb-dots');
+
+    function openLB(trackId, index) {
+        const track = document.getElementById(trackId);
+        if (!track) return;
+
+        images = Array.from(track.querySelectorAll('.review-shot img')).map(img => ({
+            src: img.src,
+            alt: img.alt || ''
+        }));
+
+        if (!images.length) return;
+
+        currentIndex = index;
+        buildDots();
+        render(false);
+
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('lb-close').focus();
+    }
+
+    function closeLB() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+        currentIndex = (currentIndex + dir + images.length) % images.length;
+        render(true);
+    }
+
+    function goTo(i) {
+        currentIndex = i;
+        render(true);
+    }
+
+    function render(animate) {
+        if (animate) {
+            lbImg.classList.add('fading');
+            setTimeout(() => {
+                setImage();
+                lbImg.classList.remove('fading');
+            }, 200);
+        } else {
+            setImage();
+        }
+        lbCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        lbDots.querySelectorAll('.lb-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+            dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+        });
+    }
+
+    function setImage() {
+        const item = images[currentIndex];
+        lbImg.src = item.src;
+        lbImg.alt = item.alt;
+    }
+
+    function buildDots() {
+        lbDots.innerHTML = images.map((_, i) => `
+            <button class="lb-dot${i === 0 ? ' active' : ''}"
+                role="tab"
+                aria-selected="${i === 0}"
+                aria-label="Image ${i + 1}"
+                data-index="${i}">
+            </button>
+        `).join('');
+        lbDots.querySelectorAll('.lb-dot').forEach(dot => {
+            dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+        });
+    }
+
+    // Buttons
+    document.getElementById('lb-close').addEventListener('click', closeLB);
+    document.getElementById('lb-prev').addEventListener('click', () => navigate(-1));
+    document.getElementById('lb-next').addEventListener('click', () => navigate(1));
+
+    // Backdrop click
+    overlay.addEventListener('click', e => {
+        if (e.target === overlay) closeLB();
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+        if (!overlay.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLB();
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
+    });
+
+    // Swipe (mobile)
+    overlay.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    overlay.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+    }, { passive: true });
+
+    // Init tracks
+    function initTrack(trackId) {
+        const track = document.getElementById(trackId);
+        if (!track) return;
+
+        track.querySelectorAll('.review-shot').forEach((figure, index) => {
+            // Thêm zoom hint icon nếu chưa có
+            if (!figure.querySelector('.lb-zoom-hint')) {
+                const hint = document.createElement('div');
+                hint.className = 'lb-zoom-hint';
+                hint.setAttribute('aria-hidden', 'true');
+                hint.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/>
+                    <line x1="8" y1="11" x2="14" y2="11"/>
+                </svg>`;
+                figure.appendChild(hint);
+            }
+
+            figure.style.cursor = 'zoom-in';
+            figure.addEventListener('click', () => openLB(trackId, index));
+
+            // Accessibility
+            figure.setAttribute('role', 'button');
+            figure.setAttribute('tabindex', '0');
+            const img = figure.querySelector('img');
+            figure.setAttribute('aria-label', `Xem ảnh phóng to: ${img ? img.alt : ''}`);
+            figure.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLB(trackId, index);
+                }
+            });
+        });
+    }
+
+    // Init cả 2 ngôn ngữ
+    initTrack('reviews-track-vi');
+    initTrack('reviews-track-en');
+
+})();
