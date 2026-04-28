@@ -1,27 +1,44 @@
 {
+    "id": "/",
     "name": "Happy House Laundry",
     "short_name": "HHL",
-    "description": "Dịch vụ giặt sấy chuyên nghiệp tại Đà Nẵng",
-    "start_url": "/",
+    "description": "Dịch vụ giặt sấy chuyên nghiệp hàng đầu Đà Nẵng — Lấy & trả tận nơi, thiết bị hiện đại, giá cả minh bạch.",
+    "lang": "vi",
+    "dir": "ltr",
+    "start_url": "/?source=pwa",
     "scope": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "display_override": [
+        "window-controls-overlay",
+        "standalone",
+        "browser"
+    ],
+    "orientation": "portrait-primary",
+    "background_color": "#FFFFFF",
     "theme_color": "#F5B301",
+    "categories": [
+        "business",
+        "lifestyle",
+        "utilities"
+    ],
     "icons": [
         {
             "src": "/Picture/favicon-16x16.png",
             "sizes": "16x16",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/Picture/favicon-32x32.png",
             "sizes": "32x32",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/Picture/apple-touch-icon.png",
             "sizes": "180x180",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/Picture/android-chrome-192x192.png",
@@ -30,10 +47,71 @@
             "purpose": "any"
         },
         {
+            "src": "/Picture/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
             "src": "/Picture/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
-    ]
+    ],
+    "shortcuts": [
+        {
+            "name": "Gọi Ngay",
+            "short_name": "Gọi",
+            "description": "Gọi điện đặt lịch giặt ngay",
+            "url": "tel:0914744333",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32"
+                }
+            ]
+        },
+        {
+            "name": "Chat Zalo",
+            "short_name": "Zalo",
+            "description": "Nhắn tin qua Zalo",
+            "url": "https://zalo.me/0914744333",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32"
+                }
+            ]
+        },
+        {
+            "name": "Bảng Giá",
+            "short_name": "Giá",
+            "description": "Xem bảng giá dịch vụ giặt sấy",
+            "url": "/#pricing",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/Picture/picture1.jpg",
+            "sizes": "600x750",
+            "type": "image/jpeg",
+            "form_factor": "narrow",
+            "label": "Happy House Laundry - Trang chủ"
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": []
 }
