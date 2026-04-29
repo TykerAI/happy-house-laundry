@@ -1,4 +1,4 @@
-{
+\{
     "id": "/",
     "name": "Happy House Laundry",
     "short_name": "HHL",
@@ -67,38 +67,41 @@
     ],
     "shortcuts": [
         {
-            "name": "Gọi Ngay",
-            "short_name": "Gọi",
-            "description": "Gọi điện đặt lịch giặt ngay",
-            "url": "tel:0914744333",
-            "icons": [
-                {
-                    "src": "/Picture/favicon-32x32.png",
-                    "sizes": "32x32"
-                }
-            ]
-        },
-        {
-            "name": "Chat Zalo",
-            "short_name": "Zalo",
-            "description": "Nhắn tin qua Zalo",
-            "url": "https://zalo.me/0914744333",
-            "icons": [
-                {
-                    "src": "/Picture/favicon-32x32.png",
-                    "sizes": "32x32"
-                }
-            ]
-        },
-        {
-            "name": "Bảng Giá",
-            "short_name": "Giá",
+            "name": "Xem Bảng Giá",
+            "short_name": "Bảng Giá",
             "description": "Xem bảng giá dịch vụ giặt sấy",
             "url": "/#pricing",
             "icons": [
                 {
                     "src": "/Picture/favicon-32x32.png",
-                    "sizes": "32x32"
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Xem Dịch Vụ",
+            "short_name": "Dịch Vụ",
+            "description": "Khám phá các dịch vụ giặt sấy",
+            "url": "/#services",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Liên Hệ",
+            "short_name": "Liên Hệ",
+            "description": "Xem địa chỉ và thông tin liên hệ",
+            "url": "/#contact",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
                 }
             ]
         }
