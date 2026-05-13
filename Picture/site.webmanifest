@@ -1,0 +1,103 @@
+{
+    "id": "/",
+    "name": "Happy House Laundry",
+    "short_name": "HHL",
+    "description": "Dịch vụ giặt sấy chuyên nghiệp hàng đầu Đà Nẵng.",
+    "lang": "vi",
+    "dir": "ltr",
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#F5B301",
+    "categories": [
+        "business",
+        "lifestyle"
+    ],
+    "icons": [
+        {
+            "src": "/Picture/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/Picture/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/Picture/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Xem Bảng Giá",
+            "short_name": "Bảng Giá",
+            "description": "Xem bảng giá dịch vụ giặt sấy",
+            "url": "/#pricing",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Xem Dịch Vụ",
+            "short_name": "Dịch Vụ",
+            "description": "Khám phá các dịch vụ giặt sấy",
+            "url": "/#services",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Liên Hệ",
+            "short_name": "Liên Hệ",
+            "description": "Xem địa chỉ và thông tin liên hệ",
+            "url": "/#contact",
+            "icons": [
+                {
+                    "src": "/Picture/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    "prefer_related_applications": false
+}

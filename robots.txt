@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Block development files
+Disallow: /.git/
+Disallow: /.agent/
+Disallow: /*.py
+Disallow: /extract_code.py
+Disallow: /format_code.py
+Disallow: /generate_en.py
+Disallow: /generate_vi.py
+
+# Sitemap
+Sitemap: https://happyhouselaundry.com/sitemap.xml

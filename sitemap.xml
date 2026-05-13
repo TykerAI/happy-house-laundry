@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+<url>
+<loc>https://happyhouselaundry.com/</loc>
+<lastmod>2026-05-13</lastmod>
+<changefreq>weekly</changefreq>
+
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/en.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/"/>
+
+</url>
+
+<url>
+<loc>https://happyhouselaundry.com/en.html</loc>
+<lastmod>2026-05-13</lastmod>
+<changefreq>weekly</changefreq>
+
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/en.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/"/>
+
+</url>
+
+<url>
+<loc>https://happyhouselaundry.com/privacy-policy-vi.html</loc>
+<lastmod>2026-04-26</lastmod>
+<changefreq>monthly</changefreq>
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/privacy-policy-vi.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/privacy-policy.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/privacy-policy-vi.html"/>
+</url>
+
+<url>
+<loc>https://happyhouselaundry.com/privacy-policy.html</loc>
+<lastmod>2026-04-26</lastmod>
+<changefreq>monthly</changefreq>
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/privacy-policy-vi.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/privacy-policy.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/privacy-policy-vi.html"/>
+</url>
+
+<url>
+<loc>https://happyhouselaundry.com/compensation-claims-policy-vi.html</loc>
+<lastmod>2026-04-26</lastmod>
+<changefreq>monthly</changefreq>
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/compensation-claims-policy-vi.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/compensation-claims-policy.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/compensation-claims-policy-vi.html"/>
+</url>
+
+<url>
+<loc>https://happyhouselaundry.com/compensation-claims-policy.html</loc>
+<lastmod>2026-04-26</lastmod>
+<changefreq>monthly</changefreq>
+<xhtml:link rel="alternate" hreflang="vi" href="https://happyhouselaundry.com/compensation-claims-policy-vi.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://happyhouselaundry.com/compensation-claims-policy.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://happyhouselaundry.com/compensation-claims-policy-vi.html"/>
+</url>
+
+</urlset>
